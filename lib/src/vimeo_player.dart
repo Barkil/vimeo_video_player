@@ -46,6 +46,12 @@ class VimeoVideoPlayer extends StatelessWidget {
   /// Default value: [true]
   final bool enableDNT;
 
+  /// Used to enable fullscreen mode when playing
+  /// When enabled, the player go full screen when play is hit
+  ///
+  /// Default value: [false]
+  final bool enableFullScreenOnPlay;
+
   /// Defines the background color of the InAppWebView
   ///
   /// Default Value: [Colors.black]
@@ -98,6 +104,7 @@ class VimeoVideoPlayer extends StatelessWidget {
     this.showByline = false,
     this.showControls = true,
     this.enableDNT = true,
+    this.enableFullScreenOnPlay = false,
     this.backgroundColor = Colors.black,
     this.onReady,
     this.onPlay,
@@ -198,7 +205,8 @@ class VimeoVideoPlayer extends StatelessWidget {
         '&title=$showTitle'
         '&byline=$showByline'
         '&controls=$showControls'
-        '&dnt=$enableDNT';
+        '&dnt=$enableDNT'
+        '&playsinline=${enableFullScreenOnPlay ? 0 : 1}';
   }
 
   /// Manage vimeo player events received from the WebView
